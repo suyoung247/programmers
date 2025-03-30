@@ -1,20 +1,19 @@
 function solution(s) {
-  let noZero = s
-  let countZero = 0;
-  let process = 0;
-  let string = '';
-  while (noZero !== '1') {
-    for (const item of noZero) {
-      if (item !== '0') {
-        string+= item
+  let steps = 0;
+  let zeroCount = 0;
+  
+  while (s !== '1') {
+    let onceOnly = '';
+    for (let i = 0; i < s.length; i++) {
+      if (s[i] !== '0') {
+        onceOnly += s[i];
       } else {
-        countZero++
+        zeroCount++;
       }
     }
-    noZero = (string.length).toString(2);
-    process++;
-    string = ''
+    s = onceOnly.length.toString(2);
+    steps++;
   }
-  
-  return [process, countZero];
+
+  return [steps, zeroCount];
 }
